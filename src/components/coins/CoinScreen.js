@@ -1,8 +1,12 @@
 import React from 'react'
-
+import {View, Text} from 'react-native'
 function CoinScreen() {
   return (
-    <div>CoinScreen</div>
+    <View>
+        <Text>
+            Coin Screen
+        <Text/>
+    </View>
   )
 }
 
