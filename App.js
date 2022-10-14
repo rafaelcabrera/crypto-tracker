@@ -1,10 +1,10 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import CoinStack from 'src/coin-stack';
+import CoinsStack from './src/components/coins/CoinsStack';
 const App = () => {
   return (
     <NavigationContainer>
-      <CoinStack />
+      <CoinsStack />
     </NavigationContainer>
   );
 };
