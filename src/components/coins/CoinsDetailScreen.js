@@ -1,20 +1,25 @@
-import { View, Text , Pressable, StyleSheet} from "react-native";
+import React, { Component } from 'react';
+import { View, Text, Pressable, StyleSheet } from 'react-native';
 
-import React from "react";
+class CoinsScreen extends Component {
 
-export const CoinsScreen = ({ navigation }) => {
-  const handlePess = () => {
-    navigation.navigate("CoinDetailScreen");
-  };
-  return (
-    <View style={styles.container}>
-      <Text style={styles.titleText}>CoinsScreen </Text>
-      <Pressable style={styles.btn} onPress={handlePess}>
-        <Text style={styles.btnText}>Ir a detail</Text>
-      </Pressable>
-    </View>
-  );
-};
+    handlerPress = ()=>{
+        console.log("go to detail", this.props);
+        this.props.navigation.navigate('CoinDetail');
+    }
+
+    render(){
+        return (
+            <View style={styles.container}>
+                <Text style={styles.titleText}> Coins Screen</Text>
+                <Pressable style={styles.btn} onPress={this.handlerPress}>
+                    <Text style={styles.btnText}>Ir a detail</Text>
+                </Pressable>
+            </View>
+        );
+    }
+}
+
 
 const styles = StyleSheet.create({
   container: {
@@ -36,3 +41,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
+
+export default CoinsScreen;

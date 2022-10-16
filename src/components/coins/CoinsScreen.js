@@ -1,32 +1,37 @@
-/* eslint-disable prettier/prettier */
-import React, { Component } from "react";
-import { View, Text, Pressable , StyleSheet} from "react-native";
-class CoinsScreen extends Component {
-  handlePess = () => {
-    console.log("go to Detail", this.props);
+import React from 'react';
+import {StyleSheet, Text, View, Pressable} from 'react-native';
+
+export const CoinsScreen = ({navigation}) => {
+  const handlePess = () => {
+    navigation.navigate('CoinDetailScreen');
   };
-  render() {
-    return (
-      <View styles={styles.container}>
-        <Text>Coins 4 Coins</Text>
-        <Pressable style={styles.btn} onPress={this.handlePess}>
-          <Text>ir a Detail</Text>
-        </Pressable>
-      </View>
-    );
-  }
-}
+  return (
+    <View style={styles.container}>
+      <Text style={styles.titleText}>CoinsScreen </Text>
+      <Pressable style={styles.btn} onPress={handlePess}>
+        <Text style={styles.btnText}>Ir a detail</Text>
+      </Pressable>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
-    backgroundColor: "red",
+    flex: 1,
+    backgroundColor: 'red',
+  },
+  titleText: {
+    color: 'white',
+    textAlign: 'center',
   },
   btn: {
-    padding: 8,
-    backgroundColor: "blue"
-
-  }
-})
-
-export default CoinsScreen;
+    padding: 0,
+    backgroundColor: 'blue',
+    borderRadius: 8,
+    margin: 16,
+  },
+  btnText: {
+    color: 'white',
+    textAlign: 'center',
+  },
+});
