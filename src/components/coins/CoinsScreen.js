@@ -3,7 +3,7 @@ import {StyleSheet, Text, View, Pressable} from 'react-native';
 
 export const CoinsScreen = ({navigation}) => {
   const handlePess = () => {
-    navigation.navigate('CoinDetailScreen');
+    navigation.navigate('CoinsDetail');
   };
   return (
     <View style={styles.container}>

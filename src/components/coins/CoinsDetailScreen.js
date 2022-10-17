@@ -5,7 +5,7 @@ class CoinsScreen extends Component {
 
     handlerPress = ()=>{
         console.log("go to detail", this.props);
-        this.props.navigation.navigate('CoinDetail');
+        this.props.navigation.navigate('CoinsDetail');
     }
 
     render(){
