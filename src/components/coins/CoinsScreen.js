@@ -1,31 +1,36 @@
-import  React, {Component } from 'react';
-import {View, Text, Pressable, StyleSheet} from 'react-native'
-import Http from '../../libs/http'
+import React, {Component} from 'react';
+import {View, Text, Pressable, StyleSheet, TextComponent} from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
+import Http from '../../libs/http';
 
 class CoinsScreen extends Component {
-    
+  state = {coins: []};
+
   componentDidMount = async () => {
-      const coins = await Http.instance.get("https://api.coinlore.net/api/tickers/");
+    const res = await Http.instance.get(
+      'https://api.coinlore.net/api/tickers/',
+    );
 
-      console.log("coins", coins);
-    }
+    this.setState({coins: res.data});
+  };
 
-    handlePress = () => {
-      this.props.navigation.navigate('CoinDetail')
-      console.log("Click")
+  handlePress = () => {
+    this.props.navigation.navigate('CoinDetail');
+    console.log('Click');
+  };
+  render() {
+
+    const {coins} = this.state;
+
+    return (
+      <View style={styles.container}>
+        <FlatList
+        data ={coins}
+        renderItem={({item}) => <Text>{item.name}</Text>}>
+          </FlatList>
+      </View>
+    );
   }
-    render(){
-        return(
-            <View style={styles.container}>
-                <Text style={styles.tittleText}>
-                    Coin Screen
-                </Text>
-                <Pressable style={styles.btn} onPress={this.handlePress}>
-                    <Text style={styles.btnText}>Detail</Text>
-                </Pressable>
-            </View >
-        )
-    }
 }
 // export const CoinsScreen = ({ navigation }) => {
 //   const handlePess = () => {
@@ -40,25 +45,25 @@ class CoinsScreen extends Component {
 //       </View>
 //   )
 // }
-export default CoinsScreen
+export default CoinsScreen;
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        backgroundColor:"#333"
-    },
-    tittleText:{
-        color:"#fff",
-        textAlign:"center"
-    },
-    btn:{
-        padding:8,
-        backgroundColor:"#0000aa",
-        borderRadius:8,
-        margin:16,
-    },
-    btnText:{
-        color:"#fff",
-        textAlign:"center"
-    }
-})
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  tittleText: {
+    color: '#fff',
+    textAlign: 'center',
+  },
+  btn: {
+    padding: 8,
+    backgroundColor: '#0000aa',
+    borderRadius: 8,
+    margin: 16,
+  },
+  btnText: {
+    color: '#fff',
+    textAlign: 'center',
+  },
+});
