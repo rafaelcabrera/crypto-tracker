@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, Pressable, StyleSheet, TextComponent} from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import {FlatList} from 'react-native-gesture-handler';
 import Http from '../../libs/http';
 
 class CoinsScreen extends Component {
@@ -19,15 +19,17 @@ class CoinsScreen extends Component {
     console.log('Click');
   };
   render() {
-
     const {coins} = this.state;
 
     return (
       <View style={styles.container}>
         <FlatList
-        data ={coins}
-        renderItem={({item}) => <Text>{item.name}</Text>}>
-          </FlatList>
+          data={coins}
+          renderItem={({item}) => (
+            <View>
+              <Text>{item.name}</Text>
+            </View>  
+          )}></FlatList>
       </View>
     );
   }
