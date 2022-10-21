@@ -28,6 +28,7 @@ class CoinsScreen extends Component {
           renderItem={({item}) => (
             <View>
               <Text>{item.name}</Text>
+              <Text>{item.symbol}</Text>
             </View>  
           )}></FlatList>
       </View>
