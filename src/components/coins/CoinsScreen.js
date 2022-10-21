@@ -1,17 +1,26 @@
 import React, {Component} from 'react';
-import {View, Text, Pressable, StyleSheet, TextComponent} from 'react-native';
+import {
+  View,
+  Text,
+  Pressable,
+  ActivityIndicator,
+  StyleSheet,
+  TextComponent,
+} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import Http from '../../libs/http';
+import CoinsItem from './CoinsItem';
 
 class CoinsScreen extends Component {
-  state = {coins: []};
+  state = {coins: [], loading: false};
 
   componentDidMount = async () => {
+    this.setState({loading: true});
     const res = await Http.instance.get(
       'https://api.coinlore.net/api/tickers/',
     );
 
-    this.setState({coins: res.data});
+    this.setState({coins: res.data, loading: false});
   };
 
   handlePress = () => {
@@ -19,18 +28,14 @@ class CoinsScreen extends Component {
     console.log('Click');
   };
   render() {
-    const {coins} = this.state;
+    const {coins, loading} = this.state;
 
     return (
       <View style={styles.container}>
+        {loading ? <ActivityIndicator style={styles.loader} color="#fff" size="large"  /> : null}
         <FlatList
           data={coins}
-          renderItem={({item}) => (
-            <View>
-              <Text>{item.name}</Text>
-              <Text>{item.symbol}</Text>
-            </View>  
-          )}></FlatList>
+          renderItem={({item}) => <CoinsItem item={item} />}></FlatList>
       </View>
     );
   }
@@ -56,7 +61,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   tittleText: {
-    color: '#fff',
+    color: 'black',
     textAlign: 'center',
   },
   btn: {
@@ -68,5 +73,8 @@ const styles = StyleSheet.create({
   btnText: {
     color: '#fff',
     textAlign: 'center',
+  },
+  loader: {
+    marginTop: 60,
   },
 });
