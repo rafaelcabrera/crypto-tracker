@@ -16,23 +16,23 @@ class CoinsScreen extends Component {
   state = {coins: []};
 
   componentDidMount = async () => {
-    // this.setState({loading: true});
+    this.setState({loading: true})
     const res = await Http.instance.get(
       'https://api.coinlore.net/api/tickers/',
     );
 
-    this.setState({coins: res.data});
+    this.setState({coins: res.data, loading: false});
   };
 
   handlePress = () => {
     this.props.navigation.navigate('CoinDetail');
   };
   render() {
-    const {coins} = this.state;
+    const {coins, loading} = this.state;
 
     return (
       <View style={styles.container}>
-        {/* {loading ? <ActivityIndicator style={styles.loader} color="green" size="large" /> : null} */}
+        {loading ? <ActivityIndicator style={styles.loader} color="green" size="large" /> : null}
         <FlatList
           data={coins}
           renderItem={({item}) => <CoinsItem item={item} />}></FlatList>
