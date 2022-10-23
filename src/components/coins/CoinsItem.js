@@ -10,7 +10,7 @@ const CoinsItem = ({item}) => {
         <Text styles={styles.priceText}>{`$${item.price_usd}`}</Text>
       </View>
       <View style={styles.row}>
-      <Text style={styles.percentText}>{item-percent_change_1h}</Text>
+      <Text style={styles.percentText}>{item.percent_change_1h}</Text>
       </View>
     </View>
   );

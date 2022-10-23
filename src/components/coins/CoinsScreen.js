@@ -13,7 +13,7 @@ import CoinsItem from './CoinsItem';
 import Colors from '../../res/colors';
 
 class CoinsScreen extends Component {
-  state = {coins: []};
+  state = {coins: [], loading: false};
 
   componentDidMount = async () => {
     this.setState({loading: true})
