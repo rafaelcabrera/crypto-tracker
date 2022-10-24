@@ -10,7 +10,7 @@ class CoinDetailScreen extends Component {
   render() {
     return (
       <View>
-        <Text> Coin Detail Screen</Text>
+        <Text>Coin Detail Screen</Text>
       </View>
     );
   }
