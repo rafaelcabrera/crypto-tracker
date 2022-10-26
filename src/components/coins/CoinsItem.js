@@ -1,7 +1,17 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet} from 'react-native';
 
 const CoinsItem = ({item}) => {
+
+getImgArrow = () => {
+  if (item.percent_change_1h > 0){
+    return require("../../assets/arrow_up@2x.png")
+
+  }else {
+    return require("../../assets/arrow_down@2x.png")
+  }
+}
+
   return (
     <View style={styles.container}>
       <View style={styles.row}>
@@ -9,8 +19,12 @@ const CoinsItem = ({item}) => {
         <Text styles={styles.nameText}>{item.symbol}</Text>
         <Text styles={styles.priceText}>{`$${item.price_usd}`}</Text>
       </View>
-      <View style={styles.row}>
-      <Text style={styles.percentText}>{item.percent_change_1h}</Text>
+      <View styles={styles.row}>
+      <Text styles={styles.percentText}>{item.percent_change_1h}</Text>
+      <Image
+      source={this.getImgArrow}
+      styles={styles.imgIcon}
+      />
       </View>
     </View>
   );
@@ -34,6 +48,7 @@ const styles = StyleSheet.create({
   nameText: {
     color: '#fff',
     fontSize: 14,
+    marginRight: 16,
   },
   priceText: {
     color: '#fff',
@@ -42,6 +57,11 @@ const styles = StyleSheet.create({
   percentText:{
     color: '#fff',
     fontSize:12,
+    marginRight:8,
+  },
+  imgIcon: {
+    width:22,
+    height:22,
   }
 });
 
