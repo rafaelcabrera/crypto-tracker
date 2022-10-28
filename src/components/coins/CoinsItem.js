@@ -4,14 +4,14 @@ import Colors from '../../res/colors'
 
 const CoinsItem = ({item}) => {
 
-// getImgArrow = () => {
-//   if (item.percent_change_1h > 0){
-//     return require("cryptoTracker/src/assets/arrow_up@2x.png");
+getImgArrow = () => {
+  if (item.percent_change_1h > 0){
+    return require("cryptotracker/src/assets/arrow_up@2x.png");
 
-//   }else {
-//     return require("cryptoTracker/src/assets/arrow_up@2x.png")
-//   }
-// }
+  }else {
+    return require("cryptotracker/src/assets/arrow_up@2x.png")
+  }
+}
 
   return (
     <View style={styles.container}>
@@ -23,7 +23,7 @@ const CoinsItem = ({item}) => {
       <View styles={styles.row}>
       <Text styles={styles.percentText}>{item.percent_change_1h}</Text>
       <Image
-      // source={this.getImgArrow}
+      source={this.getImgArrow}
       styles={styles.imgIcon}
       />
       </View>
