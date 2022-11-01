@@ -1,18 +1,16 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet, Platform} from 'react-native';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
-import Colors from '../../res/colors'
+import Colors from '../../res/colors';
 
 const CoinsItem = ({item, onPress}) => {
-
-getImgArrow = () => {
-  if (item.percent_change_1h > 0){
-    return require("cryptotracker/src/assets/arrow_up@2x.png");
-
-  }else {
-    return require("cryptotracker/src/assets/arrow_up@2x.png")
-  }
-}
+  getImgArrow = () => {
+    if (item.percent_change_1h > 0) {
+      return require('../../assets/arrow_down@2x.png');
+    } else {
+      return require('../../assets/arrow_up@2x.png');
+    }
+  };
 
   return (
     <Pressable style={styles.container} onPress={onPress}>
@@ -22,11 +20,8 @@ getImgArrow = () => {
         <Text styles={styles.priceText}>{`$${item.price_usd}`}</Text>
       </View>
       <View styles={styles.row}>
-      <Text styles={styles.percentText}>{item.percent_change_1h}</Text>
-      <Image
-      source={this.getImgArrow}
-      styles={styles.imgIcon}
-      />
+        <Text styles={styles.percentText}>{item.percent_change_1h}</Text>
+        <Image source={this.getImgArrow} styles={styles.imgIcon} />
       </View>
     </Pressable>
   );
@@ -39,7 +34,8 @@ const styles = StyleSheet.create({
     padding: 16,
     borderBottomColor: Colors.zircon,
     borderBottomWidth: 1,
-    paddingLeft: Platform.OS == 'ios' ? 16 : 0,
+    paddingLeft: Platform.OS == 'ios' ? 16 : 16,
+    marginLeft: Platform.OS == 'ios' ? 16 : 0,
   },
   row: {
     flexDirection: 'row',
@@ -59,15 +55,15 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 12,
   },
-  percentText:{
+  percentText: {
     color: '#fff',
-    fontSize:12,
-    marginRight:8,
+    fontSize: 12,
+    marginRight: 8,
   },
   imgIcon: {
-    width:22,
-    height:22,
-  }
+    width: 22,
+    height: 22,
+  },
 });
 
 export default CoinsItem;
