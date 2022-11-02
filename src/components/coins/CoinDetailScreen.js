@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View,  Image, Text, StyleSheet} from 'react-native';
 
 class CoinDetailScreen extends Component {
   state = {coin: {}};
 
-getSymbolIcon = () => {
+getSymbolIcon = (name) => {
+
+  if(name){
+    const symbol = name.toLowerCase().replace(" ", "-");
+  }
+
   return `https://c1.coinlore.com/img/25x25/${symbol}.png`
 }
 
@@ -18,11 +23,19 @@ getSymbolIcon = () => {
     return (
       <View>
         <View>
+          <Image style = {styles.iconImg} />source={{uri: this.getSymbolIcon(coin.name)}} />
           <Text>{coin.name}</Text>
         </View>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  iconImg: {
+    width:25,
+    height:25,
+  }
+})
 
 export default CoinDetailScreen;
