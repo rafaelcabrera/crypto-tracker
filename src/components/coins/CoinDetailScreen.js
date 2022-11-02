@@ -4,6 +4,9 @@ import {View, Text} from 'react-native';
 class CoinDetailScreen extends Component {
   state = {coin: {}};
 
+getSymbolIcon = () => {
+  return `https://c1.coinlore.com/img/25x25/${symbol}.png`
+}
 
   componentDidMount() {
     const {coin} = this.props.params;
