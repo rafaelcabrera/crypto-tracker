@@ -6,9 +6,10 @@ import Colors from '../../res/colors';
 const CoinsItem = ({item, onPress}) => {
   getImgArrow = () => {
     if (item.percent_change_1h > 0) {
-      return require('../../assets/arrow_down@2x.png');
+      // return require('../../assets/arrow_down@2x.png');
     } else {
-      return require('../../assets/arrow_up@2x.png');
+      // return require('../../assets/arrow_up@2x.png');
+
     }
   };
 
