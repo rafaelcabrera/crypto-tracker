@@ -34,7 +34,7 @@ getSymbolIcon = (name) => {
 
 const styles = StyleSheet.create({
   iconImg: {
-    width:25,
+    // width:25,
     height:25,
   },
 })
